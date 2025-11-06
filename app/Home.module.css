@@ -1,0 +1,172 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #e6eefc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Rajdhani", "Orbitron", sans-serif;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, #0ff1ce22, transparent 40%),
+              radial-gradient(circle at 80% 80%, #3b82f622, transparent 40%),
+              linear-gradient(135deg, #030303, #0a0f16, #121826);
+  background-size: 200% 200%;
+  animation: bgFlow 12s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes bgFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridPulse 3s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes gridPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #00f0ff, #00d4ff, #00f0ff);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: lightWave 6s linear infinite;
+  text-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+}
+
+@keyframes lightWave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(12, 20, 30, 0.6);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 10px 14px;
+  width: 100%;
+  max-width: 520px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.inputBox:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #e6eefc;
+  padding: 12px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #7aa0b3;
+}
+
+.button {
+  background: linear-gradient(135deg, #00f0ff, #0099ff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.posts {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.noPosts {
+  color: #8fa9bb;
+  text-align: center;
+  font-style: italic;
+}
+
+.postCard {
+  background: rgba(15, 25, 35, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 1rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.postCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+  margin-top: 60px;
+  font-size: 0.85rem;
+  color: #7aa0b3;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.footer span {
+  color: #00ffff;
+  font-weight: 600;
+}

@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from "./Home.module.css";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [content, setContent] = useState(""); 
+  const [content, setContent] = useState("");
 
   async function fetchPosts() {
     try {
@@ -23,7 +24,7 @@ export default function Home() {
       const res = await fetch("/api/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content }), // 👈 sending { content }
+        body: JSON.stringify({ content }),
       });
       if (!res.ok) throw new Error("Failed to add post");
       setContent("");
@@ -38,37 +39,39 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Welcome to CYBERIUM 🐦</h1>
+    <main className={styles.container}>
+      <div className={styles.background}></div>
+      <div className={styles.gridOverlay}></div>
 
-      <div className="flex gap-2 mb-4">
+      <h1 className={styles.title}> WELCOME TO THE CYBERIUM</h1>
+
+      <div className={styles.inputBox}>
         <input
           value={content}
-          onChange={(e) => setContent(e.target.value)} 
-          placeholder="What's on your mind?"
-          className="flex-1 border rounded p-2"
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Transmit your thought..."
+          className={styles.input}
         />
-        <button
-          onClick={addPost}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Post
+        <button onClick={addPost} className={styles.button}>
+          Transmit
         </button>
       </div>
 
-      <div className="space-y-3">
-        {posts.length === 0 && (
-          <p className="text-gray-500 text-center">No posts yet 😅</p>
+      <div className={styles.posts}>
+        {posts.length === 0 ? (
+          <p className={styles.noPosts}>No transmissions yet...</p>
+        ) : (
+          posts.map((post) => (
+            <div key={post._id} className={styles.postCard}>
+              {post.content}
+            </div>
+          ))
         )}
-        {posts.map((post) => (
-          <div
-            key={post._id}
-            className="border p-3 rounded shadow-sm bg-gray-50"
-          >
-            {post.content}
-          </div>
-        ))}
       </div>
+
+      <p className={styles.footer}>
+        MADE BY <span>NISHA KUMARI</span> AND  <span>AMANDEEP SINGH</span>
+      </p>
     </main>
   );
 }
