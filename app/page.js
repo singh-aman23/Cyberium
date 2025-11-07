@@ -70,7 +70,7 @@ export default function Home() {
       </div>
 
       <p className={styles.footer}>
-        MADE BY <span>NISHA KUMARI</span> AND  <span>AMANDEEP SINGH</span>
+        MADE BY  <span>AMANDEEP SINGH</span>
       </p>
     </main>
   );
